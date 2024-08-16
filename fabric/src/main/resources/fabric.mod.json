@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "blockminer",
+  "version": "${version}",
+  "name": "BlockMiner",
+  "description": "",
+  "authors": [
+    ""
+  ],
+  "contact": {
+    "homepage": ""
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/blockminer/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.github.bunnyi116.blockminer.fabric.BlockMinerFabric"
+    ],
+    "client": [
+      "com.github.bunnyi116.blockminer.fabric.client.BlockMinerFabricClient"
+    ]
+  },
+  "mixins": [
+    "blockminer.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.2",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "architectury": ">=13.0.6"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
