@@ -1,5 +1,6 @@
 package com.github.bunnyi116.blockminer.neoforge.mixin;
 
+import com.github.bunnyi116.blockminer.BlockMinerMod;
 import com.github.bunnyi116.blockminer.task.TaskManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -17,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
-@Mixin(value = Minecraft.class, priority = 997)
+@Mixin(value = Minecraft.class, priority = BlockMinerMod.PRIORITY)
 public abstract class MixinMinecraft {
     @Shadow
     @Nullable
