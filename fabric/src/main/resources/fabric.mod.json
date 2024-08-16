@@ -1,16 +1,14 @@
 {
   "schemaVersion": 1,
-  "id": "blockminer",
-  "version": "${version}",
-  "name": "BlockMiner",
-  "description": "",
-  "authors": [
-    ""
-  ],
+  "id": "${mod_id}",
+  "version": "${mod_version}",
+  "name": "${mod_name}",
+  "description": "${mod_description}",
+  "authors": ${mod_authors_fabric},
   "contact": {
     "homepage": ""
   },
-  "license": "All-Rights-Reserved",
+  "license": "${mod_license}",
   "icon": "assets/blockminer/icon.png",
   "environment": "*",
   "entrypoints": {
@@ -18,17 +16,17 @@
       "com.github.bunnyi116.blockminer.fabric.BlockMinerFabric"
     ],
     "client": [
-      "com.github.bunnyi116.blockminer.fabric.client.BlockMinerFabricClient"
     ]
   },
   "mixins": [
-    "blockminer.mixins.json"
+    "${mod_name}.mixins.json",
+    "${mod_name}.fabric.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.16.2",
-    "minecraft": "~1.21.1",
-    "java": ">=21",
-    "architectury": ">=13.0.6"
+    "fabricloader": ">=${fabric_loader_version}",
+    "minecraft": "~${minecraft_version}",
+    "java": ">=${mov_java_version}",
+    "architectury": ">=${architectury_api_version}"
   },
   "suggests": {
     "another-mod": "*"

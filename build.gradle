@@ -5,12 +5,12 @@ plugins {
 }
 
 architectury {
-    minecraft = project.minecraft_version
+    minecraft = minecraft_version
 }
 
 allprojects {
-    group = rootProject.maven_group
-    version = rootProject.mod_version
+    group = mod_group_id
+    version = "$minecraft_version-$mod_version"
 }
 
 subprojects {
@@ -20,7 +20,8 @@ subprojects {
 
     base {
         // Set up a suffixed format for the mod jar names, e.g. `example-fabric`.
-        archivesName = "$rootProject.archives_name-$project.name"
+        // 为 mod jar 名称设置后缀格式，例如 'example-fabric'。
+        archivesName = "$mod_name-$name"
     }
 
     repositories {
@@ -32,7 +33,7 @@ subprojects {
     }
 
     dependencies {
-        minecraft "net.minecraft:minecraft:$rootProject.minecraft_version"
+        minecraft "net.minecraft:minecraft:$minecraft_version"
         mappings loom.officialMojangMappings()
     }
 
@@ -42,12 +43,29 @@ subprojects {
         // If you remove this line, sources will not be generated.
         withSourcesJar()
 
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+        sourceCompatibility = mov_java_version as Integer
+        targetCompatibility = mov_java_version as Integer
     }
 
     tasks.withType(JavaCompile).configureEach {
-        it.options.release = 21
+        it.options.release = mov_java_version as Integer
+    }
+
+    processResources {
+        // expand every property from gradle.properties
+        def stringProperties = providers.gradlePropertiesPrefixedBy('').get()
+        stringProperties.each { inputs.property(it.key, it.value) }
+
+        def files = ["*.mixins.json", "*.mod.json", "META-INF/mods.toml", "META-INF/neoforge.mods.toml"]
+        files += mov_enabled_platforms.split(',').collect {"${mod_id}.${it}.mixins.json" }
+
+        files.each {
+            filesMatching(it) {
+                expand(stringProperties) {
+                    escapeBackslash = true
+                }
+            }
+        }
     }
 
     // Configure Maven publishing.

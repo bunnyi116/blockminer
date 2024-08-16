@@ -1,38 +1,40 @@
 modLoader = "javafml"
-loaderVersion = "[2,)"
+loaderVersion = "${neo_forge_loader_version}"
 #issueTrackerURL = ""
-license = "All Rights Reserved"
+license = "${mod_license}"
 
 [[mods]]
-modId = "blockminer"
-version = "${version}"
-displayName = "BlockMiner"
-authors = ""
-description = '''
+modId = "${mod_id}"
+version = "${mod_version}"
+displayName = "${mod_name}"
+authors = "${mod_authors_neo_forge}"
+description = "${mod_description}"
 
-'''
 #logoFile = ""
 
-[[dependencies.blockminer]]
+[[dependencies.${ mod_name }]]
 modId = "neoforge"
 type = "required"
-versionRange = "[21,)"
+versionRange = "${neo_forge_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.blockminer]]
+[[dependencies.${ mod_name }]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21.1,)"
+versionRange = "[${minecraft_version},)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.blockminer]]
+[[dependencies.${ mod_name }]]
 modId = "architectury"
 type = "required"
-versionRange = "[13.0.6,)"
+versionRange = "[${architectury_api_version},)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[mixins]]
-config = "blockminer.mixins.json"
+config = "${mod_name}.mixins.json"
+
+[[mixins]]
+config = "${mod_name}.neoforge.mixins.json"

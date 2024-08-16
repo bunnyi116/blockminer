@@ -1,12 +1,11 @@
 package com.github.bunnyi116.blockminer.neoforge;
 
-import com.github.bunnyi116.blockminer.BlockMiner;
+import com.github.bunnyi116.blockminer.BlockMinerMod;
 import net.neoforged.fml.common.Mod;
 
-@Mod(BlockMiner.MOD_ID)
+@Mod(BlockMinerMod.MOD_ID)
 public final class BlockMinerNeoForge {
     public BlockMinerNeoForge() {
-        // Run our common setup.
-        BlockMiner.init();
+        BlockMinerMod.init();
     }
 }

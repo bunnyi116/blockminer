@@ -9,6 +9,5 @@ pluginManagement {
 
 rootProject.name = 'blockminer'
 
-include 'common'
-include 'fabric'
-include 'neoforge'
+include("common")
+include(mov_enabled_platforms.split(','))
