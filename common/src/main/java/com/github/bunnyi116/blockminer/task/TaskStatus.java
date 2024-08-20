@@ -5,5 +5,6 @@ public enum TaskStatus {
     WAIT_CUSTOM_UPDATE,
     WAIT_GAME_UPDATE,
     TIMEOUT,
+    RECYCLED_ITEMS,
     COMPLETE,
 }

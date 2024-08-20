@@ -17,6 +17,7 @@ public class Config {
     public static final File PATH_CONFIG = new File(PATH_ROOT, "config.json");
     public static final Config INSTANCE = Config.load();
 
+    public boolean debug = false;
     public List<String> blockWhitelist = getDefaultBlockWhitelist();
     public List<String> blockBlacklist = new ArrayList<>();
     public transient List<String> blockBlacklistServer = getDefaultBlockBlacklistServer();

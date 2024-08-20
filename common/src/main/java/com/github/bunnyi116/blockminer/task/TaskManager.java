@@ -12,11 +12,10 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.management.MonitorInfo;
 import java.util.LinkedList;
 import java.util.List;
 
-import static net.minecraft.network.chat.Component.*;
+import static net.minecraft.network.chat.Component.literal;
 
 public class TaskManager {
     private static final List<Task> tasks = new LinkedList<>();
@@ -24,8 +23,10 @@ public class TaskManager {
     private static boolean working;
 
     public static void tick() {
-        var level = Minecraft.getInstance().level;
-        var player = Minecraft.getInstance().player;
+        if (!isWorking()) return;
+        var minecraft = Minecraft.getInstance();
+        var level = minecraft.level;
+        var player = minecraft.player;
         if (level == null || player == null) return;
         if (lastTask != null && (lastTask.level != level || !level.getWorldBorder().isWithinBounds(lastTask.pos) || !lastTask.pos.closerToCenterThan(player.getEyePosition(), 3.5F))) {
             lastTask = null;

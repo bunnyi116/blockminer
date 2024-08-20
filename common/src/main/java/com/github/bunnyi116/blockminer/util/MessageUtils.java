@@ -2,7 +2,8 @@ package com.github.bunnyi116.blockminer.util;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.vehicle.Minecart;
+
+import static net.minecraft.network.chat.Component.literal;
 
 public class MessageUtils {
 
@@ -10,7 +11,15 @@ public class MessageUtils {
         Minecraft.getInstance().gui.setOverlayMessage(message, false);
     }
 
+    public static void setOverlayMessage(String message) {
+        setOverlayMessage(literal(message));
+    }
+
     public static void addMessage(Component message) {
         Minecraft.getInstance().gui.getChat().addMessage(message);
+    }
+
+    public static void addMessage(String message) {
+        addMessage(literal(message));
     }
 }

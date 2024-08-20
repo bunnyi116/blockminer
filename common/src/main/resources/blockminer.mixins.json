@@ -8,6 +8,7 @@
     "MixinMultiPlayerGameMode"
   ],
   "mixins": [
+    "MixinServerboundMovePlayerPacket"
   ],
   "injectors": {
     "defaultRequire": 1

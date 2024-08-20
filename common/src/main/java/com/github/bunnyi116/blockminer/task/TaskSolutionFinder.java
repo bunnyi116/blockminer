@@ -2,7 +2,6 @@ package com.github.bunnyi116.blockminer.task;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.Blocks;
 
 public class TaskSolutionFinder {
     public void piston(BlockPos targetPos) {

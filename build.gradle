@@ -32,6 +32,10 @@ subprojects {
         // for more information about repositories.
     }
 
+    loom {
+        accessWidenerPath = project(":common").loom.accessWidenerPath
+    }
+
     dependencies {
         minecraft "net.minecraft:minecraft:$minecraft_version"
         mappings loom.officialMojangMappings()
@@ -57,7 +61,7 @@ subprojects {
         stringProperties.each { inputs.property(it.key, it.value) }
 
         def files = ["*.mixins.json", "*.mod.json", "META-INF/mods.toml", "META-INF/neoforge.mods.toml"]
-        files += mov_enabled_platforms.split(',').collect {"${mod_id}.${it}.mixins.json" }
+        files += mov_enabled_platforms.split(',').collect { "${mod_id}.${it}.mixins.json" }
 
         files.each {
             filesMatching(it) {
