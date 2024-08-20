@@ -33,7 +33,7 @@ public abstract class MixinMinecraft {
         if (level == null || player == null || hitResult == null) {
             return;
         }
-        if (hitResult.getType() == HitResult.Type.BLOCK || player.getMainHandItem().isEmpty()) {
+        if (hitResult.getType() == HitResult.Type.BLOCK && player.getMainHandItem().isEmpty()) {
             var blockHitResult = (BlockHitResult) hitResult;
             var blockPos = blockHitResult.getBlockPos();
             var blockState = level.getBlockState(blockPos);

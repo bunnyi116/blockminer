@@ -52,7 +52,7 @@ public class Task {
             case RECYCLED_ITEMS -> recycledItems();
             case COMPLETE -> complete();
         }
-        debug("结束");
+        debug("结束\r\n");
         ++this.ticks;
     }
 

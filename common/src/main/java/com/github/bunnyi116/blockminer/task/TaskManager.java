@@ -59,7 +59,7 @@ public class TaskManager {
                     return;
                 }
             }
-            Debug.alwaysWrite("[%s] %s", block.getName().getString(), blockPos.toShortString());
+            Debug.write("[%s] [任务添加] %s", blockPos.toShortString(), block.getName().getString());
             tasks.add(new Task(level, block, blockPos));
         }
     }

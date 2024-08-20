@@ -34,6 +34,7 @@ public class DebugCommand extends Command {
             b = !Config.INSTANCE.debug;
         }
         Config.INSTANCE.debug = b;
+        Config.save();
         if (Config.INSTANCE.debug) {
             MessageUtils.addMessage("调试开启");
         } else {
